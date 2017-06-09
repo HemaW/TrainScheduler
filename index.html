@@ -2,28 +2,89 @@
 <html lang=en-US>
 <head>
 	<meta charset="utf-8">
-	<title>Train Scehduler</title>
+	<title>Train Scheduler</title>
 </head>
 <body>
-In this assignment, you'll create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
-- - -
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!-- Google Firebase Link -->
+       <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-storage.js"></script>
+       <!-- Moment JS Link -->
+      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-### Setup
 
-* We'll leave that up to you -- however you like. Just make sure you're using Firebase to store data, GitHub to backup your project, and GithHub Pages to host your finished site.
+      <!-- Jumbotron -->
+      <div class="jumbotron" style="background-color: grey; color: white">
+        <h1 class="text-center">Train Tracker and Scheduler!</h1>
+      </div>
 
-### Instructions
+      <div class="row">
 
-* Make sure that your app suits this basic spec:
-  * When adding trains, administrators should be able to submit the following:
-    * Train Name
-    * Destination 
-    * First Train Time -- in military time
-    * Frequency -- in minutes
-  * Code this app to calculate when the next train will arrive; this should be relative to the current time.
-  * Users from many different machines must be able to view same train times.
-  * Styling and theme are completely up to you. Get Creative!
+        <div class="col-lg-12">
+
+        <!-- Train Schedule -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Train Scheduler</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='train-table'>
+                <thead>
+                  <tr id="tableHeading">
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency </th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+   <!-- Add Train  -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Add Train</strong></h3>
+            </div>
+            <div class="panel-body">
+
+              <!-- Add Train -->
+              <form>
+                <div class="form-group">
+                  <label for="train-name-input">Train Name</label>
+                  <input class="form-control" id="trainName-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="Destination-input">Destination</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="frequency-input">Frequency (min)</label>
+                  <input class="form-control" id="frequency" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="minutesAway-input">Minutes Away</label>
+                  <input class="form-control" id="minutesAway-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
+              </form>
+
+            </div>
+
+          </div>
+
+
+<!-- JavaScript -->
+<script src= "logic.js"></script>
 
 </body>
 </html>
