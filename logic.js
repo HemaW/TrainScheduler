@@ -74,7 +74,6 @@
    	    frequency = childSnapshot.val().frequency;
 	    firstTrain = childSnapshot.val().firstTrain;
 
-
 	    var firstTimeConverted = moment(firstTrain, "hh:mm").subtract(1, "years");
 	    console.log("TIME CONVERTED: " + firstTimeConverted);
 
@@ -91,7 +90,28 @@
 	    console.log("MINUTES TILL TRAIN: " + minAway);
 
 	    var nextTrain = moment().add(nextTrain, "minutes");
+	    var nextArrival = moment(nextTrain).format("hh:mm");
+
 	    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+
+
+
+	    $("tbody").append("<tr>" +
+	    						"<td>" + trainName + "</td>" +
+	    						"<td>" + destination + "</td>" +
+	    						"<td>" + frequency + "</td>" +
+	    						"<td>" + firstTrain + "</td>" +
+	    						"<td>" + nextArrival + "</td>" +
+	    						"<td>" + minAway + "</td>" +
+
+
+
+
+	    				 "</tr>");
+
+
+	    
 
 	    // Change the HTML to reflect new divs added on page.
 
