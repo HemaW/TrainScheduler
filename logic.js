@@ -1,4 +1,6 @@
+	
 	// Initialize Firebase
+
 	var config = {
 	    apiKey: "AIzaSyD_j_pEKl0uM0TBgit0e3DVSa4gFPWXFp4",
 	    authDomain: "project-simple-serve.firebaseapp.com",
@@ -16,7 +18,7 @@
 	// initial values for variables
 	// var trainName = "";
 	// var destination = "";
-	// var minutesAway = "00:00"
+	// var minutesAway = "00:00";
 	// var frequency = 0; 
 
 	// set the on click function
@@ -31,7 +33,7 @@
 
 	    var trainName = "";
 	    var destination = "";
-	    var minutesAway = "00:00"
+	    var minutesAway = "00:00";
 	    var frequency = 0;
 
 	    // Grabbed the values from the text boxes.
@@ -75,14 +77,20 @@
 	    console.log(childSnapshot.val().frequency);
 	    console.log(childSnapshot.val().dateAdded);
 
-	    var firstTimeConverted = moment(minutesAway, "HH:mm").subtract(1, "years");
+	    trainName = childSnapshot.val().trainName;
+	    destination = childSnapshot.val().destination;
+	    minutesAway = childSnapshot.val().minutesAway;
+	    frequency = childSnapshot.val().frequency;
+
+
+	    var firstTimeConverted = moment(minutesAway, "hh:mm").subtract(1, "years");
 	    console.log("TIME CONVERTED: " + firstTimeConverted);
 
 	    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 	    console.log("DIFFERENCE IN TIME: " + diffTime);
 
 	    var currentTime = moment();
-	    console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+	    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
 	    var timeRemaining = diffTime % frequency;
 	    console.log("TIME REMAINING " + timeRemaining);
@@ -91,7 +99,7 @@
 	    console.log("MINUTES TILL TRAIN: " + minAway);
 
 	    var nextTrain = moment().add(nextTrain, "minutes");
-	    console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+	    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
 	    // Change the HTML to reflect new divs added on page.
 
@@ -110,7 +118,7 @@
 	    added.append(trainFreq);
 
 	    var trainTime = $("<td>");
-	    trainTime.text(moment(nextTrain).format("HH:mm"));
+	    trainTime.text(moment(nextTrain).format("hh:mm"));
 	    trainTime.text(nextTrain);
 	    added.append(trainTime);
 
