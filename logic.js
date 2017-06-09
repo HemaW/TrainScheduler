@@ -21,69 +21,61 @@
 	// var minutesAway = "00:00";
 	// var frequency = 0; 
 
-	// set the on click function
+	// set the on click function for the submit button to work.
 	var trainCounter = 0;
-	$("#add-train").on("click", function() {
+	$("#add-train-btn").on("click", function() {
 
-	    // prevents the default 
-
+	    // prevents the form default 
 	    event.preventDefault();
-
-	    // initial values for variables
-
-	    var trainName = "";
-	    var destination = "";
-	    var minutesAway = "00:00";
-	    var frequency = 0;
-
+	    // alert("submit button clicked");
+	    
 	    // Grabbed the values from the text boxes.
 	    trainName = $("#trainName-input").val().trim();
 	    destination = $("#destination-input").val().trim();
-	    minutesAway = $("#minutesAway-input").val().trim();
 	    frequency = $("#frequency-input").val().trim();
+	    firstTrain = $("#firstTrain-input").val().trim();
 
 	    // logs everything.
-
-	    console.log(trainName);
-	    console.log(destination);
-	    console.log(minutesAway);
-	    console.log(frequency);
-
+	    // console.log("trainName =" + trainName);
+	    // console.log("destination =" + destination);
+	    // console.log("frequency =" + frequency);
+	    // console.log("firstTrain =" + firstTrain);
 
 	    // "Pushing values in the database"
-
 	    database.ref().push({
 	        trainName: trainName,
 	        destination: destination,
-	        minutesAway: minutesAway,
 	        frequency: frequency,
+	        firstTrain: firstTrain,
 	        dateAdded: firebase.database.ServerValue.TIMESTAMP
 	    });
 
+	    // Clear the input form.
 	    $("#trainName-input").val("");
 	    $("#destination-input").val("");
-	    $("#minutesAway-input").val("");
-	    $("#frequency-input").val("");
+	   	$("#frequency-input").val("");
+	    $("#firstTrain-input").val("");
 
 	});
 
-	// Firebase watcher + initial loader like the .on("value") function.(What Franklin explained.)
 
+
+	// Firebase watcher + initial loader like the .on("value") function.(What Franklin explained.)
 	database.ref().on("child_added", function(childSnapshot) {
 
 	    console.log(childSnapshot.val().trainName);
 	    console.log(childSnapshot.val().destination);
-	    console.log(childSnapshot.val().minutesAway);
-	    console.log(childSnapshot.val().frequency);
+   	    console.log(childSnapshot.val().frequency);
+	    console.log(childSnapshot.val().firstTrain);
 	    console.log(childSnapshot.val().dateAdded);
 
 	    trainName = childSnapshot.val().trainName;
 	    destination = childSnapshot.val().destination;
-	    minutesAway = childSnapshot.val().minutesAway;
-	    frequency = childSnapshot.val().frequency;
+   	    frequency = childSnapshot.val().frequency;
+	    firstTrain = childSnapshot.val().firstTrain;
 
 
-	    var firstTimeConverted = moment(minutesAway, "hh:mm").subtract(1, "years");
+	    var firstTimeConverted = moment(firstTrain, "hh:mm").subtract(1, "years");
 	    console.log("TIME CONVERTED: " + firstTimeConverted);
 
 	    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
