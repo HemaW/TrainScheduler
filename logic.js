@@ -90,6 +90,7 @@
 	    console.log("MINUTES TILL TRAIN: " + minAway);
 
 	    var nextTrain = moment().add(nextTrain, "minutes");
+	    // var nextTrain = moment().add(minAway, minutes);
 	    var nextArrival = moment(nextTrain).format("hh:mm");
 
 	    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
@@ -105,13 +106,8 @@
 	    						"<td>" + nextArrival + "</td>" +
 	    						"<td>" + minAway + "</td>" +
 
-
-
-
 	    				 "</tr>");
-
-
-	    
+    
 
 	    // Change the HTML to reflect new divs added on page.
 
