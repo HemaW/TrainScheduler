@@ -89,8 +89,8 @@
 	    var minAway = frequency - timeRemaining;
 	    console.log("MINUTES TILL TRAIN: " + minAway);
 
-	    var nextTrain = moment().add(nextTrain, "minutes");
-	    // var nextTrain = moment().add(minAway, minutes);
+	    // var nextTrain = moment().add(nextTrain, "minutes");
+	    var nextTrain = moment().add(minAway, "minutes");
 	    var nextArrival = moment(nextTrain).format("hh:mm");
 
 	    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
